@@ -3,7 +3,9 @@
 
 
 void test_function_queue(void) {
+    
     Queue<int> test_queue(3);
+
     TEST_ASSERT_TRUE(test_queue.queue(1));
     TEST_ASSERT_TRUE(test_queue.queue(2));
     TEST_ASSERT_TRUE(test_queue.queue(3));
