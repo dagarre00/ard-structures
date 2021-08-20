@@ -1,18 +1,23 @@
 #include <queue.h>
 
-Queue::Queue(int size){
-    this->list = new int[size];
+#define DEFAULT_SIZE 10
+
+template <class t>
+Queue<t>::Queue(int size){
+    this->list = new t[size];
     this->front_index = 0;
     this->rear_index = 0;
     this->size = size;
     this->free_slots = size;
 }
 
-int Queue::freeSlots() {
+template <class t>
+int Queue<t>::freeSlots() {
     return this->free_slots;
 }
 
-int Queue::deQueue(){
+template <class t>
+t Queue<t>::deQueue(){
     if(this->free_slots <= size){
         int value = this->list[this->front_index];
         if(this->front_index + 1 == this->size){
@@ -28,7 +33,8 @@ int Queue::deQueue(){
     }
 }
 
-bool Queue::queue(int value) {
+template <class t>
+bool Queue<t>::queue(t value) {
     if(this->free_slots >= 1){
         this->list[this->rear_index] = value;
         this->free_slots --;
@@ -42,3 +48,7 @@ bool Queue::queue(int value) {
         return false;
     }
 }
+
+template class Queue<float>;
+template class Queue<int>;
+template class Queue<char>;
